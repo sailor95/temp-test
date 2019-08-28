@@ -31,6 +31,11 @@
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
   </Target>
 
+  <Target Name="DebugEnsureNodeDependency" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+    <!-- Ensure Node modules are installed-->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
